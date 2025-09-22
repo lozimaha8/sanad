@@ -17,11 +17,11 @@ jobs:
 
       - name: Create RDP User with Static Password
         run: |
-          $password = "Admin@123"
+          $password = "admin@123"
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
 
-          if (-not (Get-LocalUser -Name "TOOLBOXLAP" -ErrorAction SilentlyContinue)) {
-              New-LocalUser -Name "TOOLBOXLAP" -Password $securePass -AccountNeverExpires
+          if (-not (Get-LocalUser -Name "sanad111" -ErrorAction SilentlyContinue)) {
+              New-LocalUser -Name "sanad111" -Password $securePass -AccountNeverExpires
           }
 
           Add-LocalGroupMember -Group "Administrators" -Member "TOOLBOXLAP"
@@ -29,7 +29,7 @@ jobs:
 
           echo "RDP_CREDS=User: TOOLBOXLAP | Password: $password" >> $env:GITHUB_ENV
 
-          if (-not (Get-LocalUser -Name "TOOLBOXLAP")) {
+          if (-not (Get-LocalUser -Name "sanad111")) {
               Write-Error "User creation failed"
               exit 1
           }
@@ -73,7 +73,7 @@ jobs:
         run: |
           Write-Host "`n=== RDP ACCESS ==="
           Write-Host "Address: $env:TAILSCALE_IP"
-          Write-Host "Username: TOOLBOXLAP"
+          Write-Host "Username: sanad111"
           Write-Host "Password: admin@123"
           Write-Host "==================`n"
           while ($true) {
