@@ -24,10 +24,10 @@ jobs:
               New-LocalUser -Name "sanad111" -Password $securePass -AccountNeverExpires
           }
 
-          Add-LocalGroupMember -Group "Administrators" -Member "TOOLBOXLAP"
-          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "TOOLBOXLAP"
+          Add-LocalGroupMember -Group "Administrators" -Member "sanad111"
+          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "sanad111"
 
-          echo "RDP_CREDS=User: TOOLBOXLAP | Password: $password" >> $env:GITHUB_ENV
+          echo "RDP_CREDS=User: sanad111 | Password: $password" >> $env:GITHUB_ENV
 
           if (-not (Get-LocalUser -Name "sanad111")) {
               Write-Error "User creation failed"
